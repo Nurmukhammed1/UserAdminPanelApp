@@ -37,7 +37,7 @@ document.getElementById('loginFormElement').addEventListener('submit', function 
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
 
-    fetch('http://user-admin-panel.runasp.net/api/auth/login', {
+    fetch('https://user-admin-panel.runasp.net/api/auth/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ document.getElementById('registerFormElement').addEventListener('submit', functi
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
 
-    fetch('http://user-admin-panel.runasp.net/api/auth/register', {
+    fetch('https://user-admin-panel.runasp.net/api/auth/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
