@@ -50,7 +50,7 @@ document.getElementById('loginFormElement').addEventListener('submit', function 
             if (data.success) {
                 localStorage.setItem('authToken', data.token);
                 localStorage.setItem('currentUser', JSON.stringify(data.user));
-                window.location.href = 'admin.html';
+                window.location.href = 'index.html';
             } else {
                 showAlert('loginAlert', data.message || 'Login failed');
             }
