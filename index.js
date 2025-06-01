@@ -5,10 +5,10 @@ let currentUser = null;
 
 // Initialize page
 document.addEventListener('DOMContentLoaded', function () {
+    initializeEventListeners();
     initializeAuth();
     loadCurrentUser();
     loadUsers();
-    initializeEventListeners();
     initializeTooltips();
 });
 
