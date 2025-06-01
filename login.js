@@ -96,5 +96,7 @@ document.getElementById('registerFormElement').addEventListener('submit', functi
 
 // Redirect if already logged in
 if (localStorage.getItem('authToken')) {
-    window.location.href = 'admin.html';
+    window.location.href = 'index.html';
 }
+
+

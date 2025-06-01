@@ -170,7 +170,7 @@ function initializeEventListeners() {
     document.getElementById('logoutBtn').addEventListener('click', function (e) {
         e.preventDefault();
         localStorage.clear();
-        window.location.href = 'index.html';
+        window.location.href = 'login.html';
     });
 }
 
@@ -304,4 +304,9 @@ function formatLastSeen(timestamp) {
     if (diffInMinutes < 10080) return `${Math.floor(diffInMinutes / 1440)} days ago`;
 
     return date.toLocaleDateString();
+}
+
+function logout() {
+    localStorage.clear();
+    window.location.href = "login.html"; 
 }
