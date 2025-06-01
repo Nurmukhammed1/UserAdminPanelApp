@@ -94,4 +94,8 @@ document.getElementById('registerFormElement').addEventListener('submit', functi
         });
 });
 
+if (localStorage.getItem('authToken')) {
+    window.location.href = 'index.html';
+}
+
 
