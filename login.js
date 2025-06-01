@@ -42,7 +42,8 @@ document.getElementById('loginFormElement').addEventListener('submit', function 
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password }),
+        referrerPolicy: "unsafe-url" 
     })
         .then(response => response.json())
         .then(data => {
@@ -73,7 +74,8 @@ document.getElementById('registerFormElement').addEventListener('submit', functi
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, password })
+        body: JSON.stringify({ name, email, password }),
+        referrerPolicy: "unsafe-url" 
     })
         .then(response => response.json())
         .then(data => {
