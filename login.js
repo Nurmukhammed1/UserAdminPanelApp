@@ -61,7 +61,7 @@ document.getElementById('loginFormElement').addEventListener('submit', function 
         });
 });
 
-// Register form submission
+
 document.getElementById('registerFormElement').addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -94,7 +94,6 @@ document.getElementById('registerFormElement').addEventListener('submit', functi
         });
 });
 
-// Redirect if already logged in
 if (localStorage.getItem('authToken')) {
     window.location.href = 'index.html';
 }

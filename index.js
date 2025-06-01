@@ -169,12 +169,12 @@ function initializeEventListeners() {
 
     document.getElementById('logoutBtn').addEventListener('click', function (e) {
         e.preventDefault();
-        localStorage.clear();
+        localStorage.removeItem('authToken');
         window.location.href = 'login.html';
     });
 }
 
-// Update checkbox states
+
 function updateCheckboxStates() {
     const selectAllCheckbox = document.getElementById('selectAll');
     const userCheckboxes = document.querySelectorAll('.user-checkbox');
@@ -193,7 +193,6 @@ function updateCheckboxStates() {
     }
 }
 
-// Update toolbar buttons
 function updateToolbarButtons() {
     const hasSelection = selectedUsers.size > 0;
 
@@ -202,14 +201,12 @@ function updateToolbarButtons() {
     document.getElementById('deleteBtn').disabled = !hasSelection;
 }
 
-// Update selection count
 function updateSelectionCount() {
     const count = selectedUsers.size;
     document.getElementById('selectionCount').textContent =
         count === 0 ? 'None selected' : `${count} selected`;
 }
 
-// Perform action (block/unblock/delete)
 function performAction(action) {
     if (selectedUsers.size === 0) return;
 
@@ -306,7 +303,3 @@ function formatLastSeen(timestamp) {
     return date.toLocaleDateString();
 }
 
-function logout() {
-    localStorage.clear();
-    window.location.href = "login.html"; 
-}
