@@ -172,7 +172,7 @@ function initializeEventListeners() {
         e.preventDefault();
         localStorage.clear();
         console.log('localStorage has been cleared. authToken:', localStorage.getItem('authToken'));
-        window.location.href = 'login.html';
+        //window.location.href = 'login.html';
     });
 }
 
