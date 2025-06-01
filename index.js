@@ -168,13 +168,15 @@ function initializeEventListeners() {
     document.getElementById('refreshBtn').addEventListener('click', loadUsers);
 
     document.getElementById('logoutBtn').addEventListener('click', function (e) {
+        console.log('Logout button was clicked! Handler started.');
         e.preventDefault();
-        localStorage.removeItem('authToken');
+        localStorage.clear();
+        console.log('localStorage has been cleared. authToken:', localStorage.getItem('authToken'));
         window.location.href = 'login.html';
     });
 }
 
-
+// Update checkbox states
 function updateCheckboxStates() {
     const selectAllCheckbox = document.getElementById('selectAll');
     const userCheckboxes = document.querySelectorAll('.user-checkbox');
