@@ -41,22 +41,37 @@ document.getElementById('loginFormElement').addEventListener('submit', function 
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
-        referrerPolicy: "unsafe-url" 
+        referrerPolicy: "unsafe-url"
     })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                localStorage.setItem('authToken', data.token);
-                localStorage.setItem('currentUser', JSON.stringify(data.user));
-                window.location.href = 'index.html';
+    .then(response => response.json())
+    .then(responseData => { 
+        if (responseData.success && responseData.data) { 
+            const apiData = responseData.data; 
+
+            if (apiData.token) {
+                localStorage.setItem('authToken', apiData.token);
             } else {
-                showAlert('loginAlert', data.message || 'Login failed');
+                console.error('Login successful, but token is missing in API response data.');
+                showAlert('loginAlert', 'Login error: Token not found.');
+                return; 
             }
-        })
-        .catch(error => {
-            console.error('Login error:', error);
-            showAlert('loginAlert', 'Network error. Please try again.');
-        });
+
+            if (apiData.user && typeof apiData.user === 'object') {
+                localStorage.setItem('currentUser', JSON.stringify(apiData.user));
+            } else {
+                localStorage.removeItem('currentUser'); 
+                console.warn('Login successful, but user data is missing or invalid in API response data.');
+            }
+
+            window.location.href = 'index.html';
+        } else {
+            showAlert('loginAlert', responseData.message || 'Login failed: Invalid response structure');
+        }
+    })
+    .catch(error => {
+        console.error('Login error:', error);
+        showAlert('loginAlert', 'Network error. Please try again.');
+    });
 });
 
 
