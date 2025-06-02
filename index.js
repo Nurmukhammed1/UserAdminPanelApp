@@ -210,8 +210,13 @@ function performAction(action) {
     const userIds = Array.from(selectedUsers);
     const token = localStorage.getItem('authToken');
 
+    let httpMethod = 'POST'; 
+    if (action === 'delete') {
+        httpMethod = 'DELETE'; 
+    }
+
     fetch(`https://user-admin-panel.runasp.net/api/users/${action}`, {
-        method: 'POST',
+        method: httpMethod,
         headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
