@@ -1,4 +1,3 @@
-// Form switching
 document.getElementById('showRegister').addEventListener('click', function (e) {
     e.preventDefault();
     document.getElementById('loginForm').style.display = 'none';
@@ -13,14 +12,14 @@ document.getElementById('showLogin').addEventListener('click', function (e) {
     clearAlerts();
 });
 
-// Clear alerts
+
 function clearAlerts() {
     ['loginAlert', 'registerAlert'].forEach(alertId => {
         document.getElementById(alertId).classList.add('d-none');
     });
 }
 
-// Show alert
+
 function showAlert(alertId, message, type = 'danger') {
     const alert = document.getElementById(alertId);
     const alertText = document.getElementById(alertId.replace('Alert', 'AlertText'));
@@ -30,7 +29,6 @@ function showAlert(alertId, message, type = 'danger') {
     alert.classList.remove('d-none');
 }
 
-// Login form submission
 document.getElementById('loginFormElement').addEventListener('submit', function (e) {
     e.preventDefault();
 

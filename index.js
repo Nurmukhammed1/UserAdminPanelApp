@@ -1,9 +1,8 @@
-// Global variables
 let users = [];
 let selectedUsers = new Set();
 let currentUser = null;
 
-// Initialize page
+
 document.addEventListener('DOMContentLoaded', function () {
     initializeEventListeners();
     initializeAuth();
@@ -12,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeTooltips();
 });
 
-// Initialize tooltips
+
 function initializeTooltips() {
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -20,7 +19,7 @@ function initializeTooltips() {
     });
 }
 
-// Check authentication
+
 function initializeAuth() {
     const token = localStorage.getItem('authToken');
     if (!token) {
@@ -28,13 +27,9 @@ function initializeAuth() {
         return;
     }
 
-    // BACKEND API CALL - Verify token validity
-    // GET /api/auth/verify
-    // Headers: { Authorization: Bearer ${token} }
-    // Expected response: { valid: true, user: {...} } or { valid: false }
 }
 
-// Load current user info
+
 function loadCurrentUser() {
     const userStr = localStorage.getItem('currentUser');
     if (userStr) {
@@ -43,13 +38,13 @@ function loadCurrentUser() {
     }
 }
 
-// Load users from backend
+
 function loadUsers() {
     showLoading(true);
 
     const token = localStorage.getItem('authToken');
 
-    fetch('/api/users', {
+    fetch('https://user-admin-panel.runasp.net/api/users', {
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -81,7 +76,7 @@ function loadUsers() {
         });
 }
 
-// Render users table
+
 function renderUsers() {
     const tbody = document.getElementById('usersTableBody');
 
@@ -128,7 +123,7 @@ function renderUsers() {
     updateCheckboxStates();
 }
 
-// Initialize event listeners
+
 function initializeEventListeners() {
     document.getElementById('selectAll').addEventListener('change', function () {
         const isChecked = this.checked;
@@ -176,7 +171,7 @@ function initializeEventListeners() {
     });
 }
 
-// Update checkbox states
+
 function updateCheckboxStates() {
     const selectAllCheckbox = document.getElementById('selectAll');
     const userCheckboxes = document.querySelectorAll('.user-checkbox');
@@ -215,13 +210,13 @@ function performAction(action) {
     const userIds = Array.from(selectedUsers);
     const token = localStorage.getItem('authToken');
 
-    fetch('/api/users/action', {
+    fetch(`/api/users/${action}`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ action, userIds })
+        body: JSON.stringify({ userIds })
     })
         .then(response => {
             if (response.status === 401) {
@@ -253,7 +248,6 @@ function performAction(action) {
         });
 }
 
-// Utility functions
 function showLoading(show) {
     document.getElementById('loadingState').style.display = show ? 'block' : 'none';
     document.querySelector('.table-container').style.display = show ? 'none' : 'block';

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <!-- Navigation Header -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -33,12 +32,10 @@
 
     <div class="container-fluid">
         <div class="main-content">
-            <!-- Page Header -->
             <div class="page-header">
                 <h1 class="page-title">User Management</h1>
             </div>
 
-            <!-- Status Messages -->
             <div id="statusAlert" class="alert alert-success d-none" role="alert">
                 <i class="fas fa-check-circle me-2"></i>
                 <span id="statusAlertText"></span>
@@ -49,7 +46,6 @@
                 <span id="errorAlertText"></span>
             </div>
 
-            <!-- Toolbar -->
             <div class="toolbar">
                 <button class="btn btn-block" id="blockBtn" disabled data-bs-toggle="tooltip" title="Block selected users">
                     <i class="fas fa-lock"></i>
@@ -69,7 +65,6 @@
                 </div>
             </div>
 
-            <!-- Users Table -->
             <div class="table-container">
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -87,13 +82,13 @@
                             </tr>
                         </thead>
                         <tbody id="usersTableBody">
-                            <!-- Users will be loaded here -->
+            
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Loading State -->
+            
             <div id="loadingState" class="text-center py-5">
                 <div class="spinner-border text-primary" role="status">
                     <span class="visually-hidden">Loading...</span>
@@ -101,7 +96,6 @@
                 <p class="mt-2 text-muted">Loading users...</p>
             </div>
 
-            <!-- Empty State -->
             <div id="emptyState" class="text-center py-5 d-none">
                 <i class="fas fa-users fa-3x text-muted mb-3"></i>
                 <h3 class="text-muted">No users found</h3>
