@@ -210,7 +210,7 @@ function performAction(action) {
     const userIds = Array.from(selectedUsers);
     const token = localStorage.getItem('authToken');
 
-    fetch(`/api/users/${action}`, {
+    fetch(`https://user-admin-panel.runasp.net/api/users/${action}`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${token}`,
