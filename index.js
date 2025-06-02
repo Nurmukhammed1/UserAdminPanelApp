@@ -61,7 +61,7 @@ function loadUsers() {
         })
         .then(data => {
             if (data.success) {
-                users = data.users;
+                users = data.data;
                 renderUsers();
             } else {
                 showError('Failed to load users');
